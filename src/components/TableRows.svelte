@@ -1,5 +1,6 @@
 <script>
     export let id, task, status, editing, handleDelete, handleEdit, closeEditing, handleInputChange;
+    const statusList = ['Done', 'In Progress', 'To Start'];
 
     let taskInput;
     $: if ( taskInput ) {
@@ -10,18 +11,29 @@
 
 <tr class="table-row">
     <td class="id-column"> { id } </td>
-    { #if editing}
+    { #if editing }
         <td>
             <input type="text" name='task' bind:value = { task } bind:this = { taskInput } class="edit-input" on:change={ (e) => handleInputChange( e, id ) }>
         </td>
         {:else}
         <td> { task } </td>
-    {/if }
-    <td> 
-        <span class='status-format { status === 'Done' ? 'done' : status === 'In Progress' ? 'progress' : 'start'}'> 
-            { status }
-        </span> 
+    { /if }
+
+    { #if editing }
+    <td>
+        <select name="status" bind:value = { status } on:change={ ( e ) => handleInputChange( e, id ) }>
+            { #each statusList as item}
+            <option value={item}> {item} </option>
+            {/each }
+        </select>
     </td>
+    { :else }
+        <td> 
+            <span class='status-format { status === 'Done' ? 'done' : status === 'In Progress' ? 'progress' : 'start'}'> 
+                { status }
+            </span> 
+        </td>
+    {/if}
     { #if editing }
         <td>
             <button on:click = { closeEditing }>
@@ -127,15 +139,15 @@
         border           : 1px solid #f3f3f3;
     }
 
-    input  {
+    input, select {
         border-radius : 5px;
         text-align    : center;
         margin        : 0;
     }
-/* select */
-    /* select{
+
+    select{
         width: fit-content;
-    } */
+    }
     
     input{
         width            : 100%;
