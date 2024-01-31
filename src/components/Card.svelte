@@ -85,10 +85,11 @@
 </table>
 
 <style>
-    table{
+    table {
         border-collapse: collapse;
         width: 100%;
     }
+
     th,
     :global(td) {
         border: 1px solid #ddd;

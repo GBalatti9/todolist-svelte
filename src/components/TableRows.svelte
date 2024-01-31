@@ -105,6 +105,8 @@
     .progress {
         background-color: rgba(126, 122, 1, 0.5);
     }
+
+
     button {
         border     : 1px solid black;
         transition : all 0.2s ease-in-out;
@@ -125,10 +127,31 @@
         border           : 1px solid #f3f3f3;
     }
 
-    .edit-input{
-        background-color: transparent;
-        border: none;
-        outline: none;
-        text-align: center;
+    input  {
+        border-radius : 5px;
+        text-align    : center;
+        margin        : 0;
     }
+/* select */
+    /* select{
+        width: fit-content;
+    } */
+    
+    input{
+        width            : 100%;
+        border           : none;
+        outline          : none;
+        /* caret-color: red; */
+        background-color : transparent;
+    }
+
+
+    /* .edit-container{
+        width    : 100%;
+        margin   : auto;
+        overflow : hidden;
+    } */
+    /* td.editing {
+        width: 100px; 
+    } */
 </style>
