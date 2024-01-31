@@ -1,9 +1,15 @@
+<script>
+    import { Form } from "./";
+
+</script>
 
 
 <table>
     <tbody>
         <tr>
-            <td colspan="5">hola</td>
+            <td colspan="5">
+                <Form />
+            </td>
         </tr>
         <tr>
             <th>#</th>
