@@ -26,6 +26,15 @@
         handleDelete: ( id ) => {
             tasks = tasks.filter(( task ) => task.id !== id);
             localStorage.setItem("tasks", JSON.stringify(tasks));
+        },
+        
+        handleEdit: ( id ) => {
+            tasks = tasks.map(( task ) => ({
+                ...task,
+                editing: task.id === id ? true : false
+            }));
+
+            localStorage.setItem("tasks", JSON.stringify(tasks));
         }
     }
 </script>
