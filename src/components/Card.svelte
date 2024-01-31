@@ -1,6 +1,11 @@
 <script>
     import { Form } from "./";
 
+    let tasks = [];
+
+    const newTask = ({ detail }) => {
+        tasks = [ ...tasks, detail ]
+    }
 </script>
 
 
@@ -8,7 +13,7 @@
     <tbody>
         <tr>
             <td colspan="5">
-                <Form />
+                <Form on:add-task={ newTask }/>
             </td>
         </tr>
         <tr>
@@ -18,6 +23,15 @@
             <th>Edit</th>
             <th>Delete</th>
         </tr>
+        { #each tasks as task}
+            <tr>
+                <td>{ task.id }</td>
+                <td>{ task.task }</td>
+                <td>{ task.status }</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        {/each }
     </tbody>
 </table>
 
