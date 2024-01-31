@@ -51,7 +51,10 @@
             
             tasks = tasks.map(( task ) => ({
                 ...task,
-                [name]: task.id === id ? value : task.task,
+                [name]: 
+                    task.id === id 
+                    ? value     : name === "task"
+                    ? task.task : task.status,
                 editing: false,
             }))
             
