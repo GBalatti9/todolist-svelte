@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import { Form } from "./";
+    import { Form, TableRows } from "./";
     import { checkId } from '../helpers';
 
     let tasks = [];
@@ -39,13 +39,7 @@
             <th>Delete</th>
         </tr>
         { #each tasks as task}
-            <tr>
-                <td>{ task.id }</td>
-                <td>{ task.task }</td>
-                <td>{ task.status }</td>
-                <td>Edit</td>
-                <td>Delete</td>
-            </tr>
+            <TableRows { ...task } />
         {/each }
     </tbody>
 </table>
