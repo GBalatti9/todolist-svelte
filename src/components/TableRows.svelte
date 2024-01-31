@@ -12,7 +12,7 @@
     <td class="id-column"> { id } </td>
     { #if editing}
         <td>
-            <input type="text" bind:value = { task } bind:this = { taskInput }>
+            <input type="text" bind:value = { task } bind:this = { taskInput } class="edit-input">
         </td>
         {:else}
         <td> { task } </td>
@@ -123,5 +123,12 @@
     .table-row:hover td {
         background-color : #e0e0e0;
         border           : 1px solid #f3f3f3;
+    }
+
+    .edit-input{
+        background-color: transparent;
+        border: none;
+        outline: none;
+        text-align: center;
     }
 </style>
