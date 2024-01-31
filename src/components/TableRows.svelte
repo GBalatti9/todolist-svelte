@@ -5,9 +5,13 @@
 </script>
 
 <tr class="table-row">
-    <td> { id } </td>
+    <td class="id-column"> { id } </td>
     <td> { task } </td>
-    <td> { status } </td>
+    <td> 
+        <span class='status-format { status === 'Done' ? 'done' : status === 'In Progress' ? 'progress' : 'start'}'> 
+            { status }
+        </span> 
+    </td>
     <td>
         <!-- EDIT -->
         <button>
@@ -51,6 +55,26 @@
 
 
 <style>
+    .id-column {
+        width: 20px;
+    }
+    .status-format {
+        padding       : 10px;
+        border-radius : 5px;
+        color         : white;
+    }
+
+    .start {
+        background-color: rgba(245, 39, 39, 0.5);
+    }
+
+    .done {
+        background-color: rgba(7, 182, 60, 0.5);
+    }
+
+    .progress {
+        background-color: rgba(126, 122, 1, 0.5);
+    }
     button {
         border     : 1px solid black;
         transition : all 0.2s ease-in-out;

@@ -24,7 +24,6 @@
 
     const rowFunctions = {        
         handleDelete: ( id ) => {
-            console.log('estoy aca');
             tasks = tasks.filter(( task ) => task.id !== id);
             localStorage.setItem("tasks", JSON.stringify(tasks));
         }
