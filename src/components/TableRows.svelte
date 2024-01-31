@@ -1,5 +1,5 @@
 <script>
-    export let id, task, status, editing, handleDelete, handleEdit, closeEditing;
+    export let id, task, status, editing, handleDelete, handleEdit, closeEditing, handleInputChange;
 
     let taskInput;
     $: if ( taskInput ) {
@@ -12,7 +12,7 @@
     <td class="id-column"> { id } </td>
     { #if editing}
         <td>
-            <input type="text" bind:value = { task } bind:this = { taskInput } class="edit-input">
+            <input type="text" name='task' bind:value = { task } bind:this = { taskInput } class="edit-input" on:change={ (e) => handleInputChange( e, id ) }>
         </td>
         {:else}
         <td> { task } </td>

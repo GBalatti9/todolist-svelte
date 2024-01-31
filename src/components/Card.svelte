@@ -43,6 +43,19 @@
                 editing: false,
             }));
             localStorage.setItem("tasks", JSON.stringify(tasks));
+        },
+        
+        handleInputChange: ( { target }, id ) => {
+            const { name, value } = target;
+            console.log({ name, value });
+            
+            tasks = tasks.map(( task ) => ({
+                ...task,
+                [name]: task.id === id ? value : task.task,
+                editing: false,
+            }))
+            
+            localStorage.setItem("tasks", JSON.stringify(tasks));
         }
     }
 </script>
