@@ -1,6 +1,11 @@
 <script>
-    export let id, task, status, editing, handleDelete, handleEdit, closeEditing, handleInputChange;
+    export let id, task, status, editing, handleDelete, handleEdit, closeEditing, handleInputChange, save;
     const statusList = ['Done', 'In Progress', 'To Start'];
+
+    let formEdited = {
+        task,
+        status
+    }
 
     let taskInput;
     $: if ( taskInput ) {
@@ -51,6 +56,7 @@
                 </svg>
 
             </button>
+            <button on:click={ save }>Save</button>
         </td>
     { :else }
     <td>
@@ -97,6 +103,7 @@
 
 
 <style>
+
     .id-column {
         width: 20px;
     }

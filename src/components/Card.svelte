@@ -54,10 +54,17 @@
                 [name]: 
                     task.id === id 
                     ? value     : name === "task"
-                    ? task.task : task.status,
-                editing: false,
+                    ? task.task : task.status
             }))
             
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        },
+
+        save: () => {
+            tasks = tasks.map(( task ) => ({
+                ...task,
+                editing: false,
+            }));
             localStorage.setItem("tasks", JSON.stringify(tasks));
         }
     }
