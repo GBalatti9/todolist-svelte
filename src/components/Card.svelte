@@ -36,12 +36,13 @@
 
             localStorage.setItem("tasks", JSON.stringify(tasks));
         },
-
+        
         closeEditing: () => {
             tasks = tasks.map(( task ) => ({
                 ...task,
                 editing: false,
-            }))
+            }));
+            localStorage.setItem("tasks", JSON.stringify(tasks));
         }
     }
 </script>

@@ -1,11 +1,22 @@
 <script>
     export let id, task, status, editing, handleDelete, handleEdit, closeEditing;
 
+    let taskInput;
+    $: if ( taskInput ) {
+        taskInput.focus();
+    }
+
 </script>
 
 <tr class="table-row">
     <td class="id-column"> { id } </td>
-    <td> { task } </td>
+    { #if editing}
+        <td>
+            <input type="text" bind:value = { task } bind:this = { taskInput }>
+        </td>
+        {:else}
+        <td> { task } </td>
+    {/if }
     <td> 
         <span class='status-format { status === 'Done' ? 'done' : status === 'In Progress' ? 'progress' : 'start'}'> 
             { status }
