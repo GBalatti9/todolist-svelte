@@ -69,4 +69,16 @@
     th {
         background-color: #f2f2f2;
     }
+
+    @media screen and (min-width: 480px){
+        table{
+            width: 80%;
+            margin: auto;
+        }
+    }
+    @media screen and (min-width: 1200px){
+        table{
+            width: 60%;
+        }
+    }
 </style>
