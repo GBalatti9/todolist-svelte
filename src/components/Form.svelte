@@ -6,7 +6,7 @@
 
     const status = ['Done', 'In Progress', 'To Start'];
 
-    const formData = {
+    let formData = {
         id: 0,
         task: '',
         status: 'Status',
@@ -22,6 +22,7 @@
 
         error = '';
         dispatch('add-task', formData);
+        formData  = { id: 0, task: '', status: 'Status', editing: false };
     }
 
 </script>
