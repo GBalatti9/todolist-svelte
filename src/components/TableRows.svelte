@@ -1,5 +1,7 @@
 <script>
-    export let id, task, status;
+    export let id, task, status, editing, handleDelete;
+    console.log(editing);
+
 </script>
 
 <tr class="table-row">
@@ -7,6 +9,7 @@
     <td> { task } </td>
     <td> { status } </td>
     <td>
+        <!-- EDIT -->
         <button>
             <svg
                 xmlns        = "http://www.w3.org/2000/svg"
@@ -25,7 +28,8 @@
         </button>
     </td>
     <td>
-        <button>
+        <!-- DELETE -->
+        <button on:click={() => handleDelete( id ) }>
             <svg
                 xmlns        = "http://www.w3.org/2000/svg"
                 fill         = "none"

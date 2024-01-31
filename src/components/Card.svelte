@@ -21,6 +21,14 @@
         tasks = [ ...tasks, detail ]
         localStorage.setItem( 'tasks', JSON.stringify(tasks) );
     }
+
+    const rowFunctions = {        
+        handleDelete: ( id ) => {
+            console.log('estoy aca');
+            tasks = tasks.filter(( task ) => task.id !== id);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+    }
 </script>
 
 
@@ -39,7 +47,10 @@
             <th>Delete</th>
         </tr>
         { #each tasks as task}
-            <TableRows { ...task } />
+            <TableRows 
+                { ...task } 
+                { ...rowFunctions }
+                />
         {/each }
     </tbody>
 </table>
