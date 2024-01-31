@@ -19,6 +19,7 @@
         }
 
         tasks = [ ...tasks, detail ]
+        localStorage.setItem( 'tasks', JSON.stringify(tasks) );
     }
 </script>
 
