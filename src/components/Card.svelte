@@ -4,6 +4,8 @@
     import { checkId } from '../helpers';
 
     let tasks = [];
+    let filteredStatus = 'Status';
+
     onMount(() => {
         tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     });
@@ -68,6 +70,12 @@
             localStorage.setItem("tasks", JSON.stringify(tasks));
         }
     }
+
+    const handleFilterTask = ({ target }) => {
+        filteredStatus = target.value;
+    }
+
+    $:filteredTasks = tasks.filter(( task ) => filteredStatus === "Status" || task.status === filteredStatus);
 </script>
 
 
@@ -81,11 +89,18 @@
         <tr>
             <th>#</th>
             <th>Task</th>
-            <th>Status</th>
+            <th>
+                <select name="status" on:change={ (e) => handleFilterTask(e) }>
+                    <option value="Status" selected>Status</option>
+                    <option value="Done">Done</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="To Start">To Start</option>
+                </select>
+            </th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
-        { #each tasks as task}
+        { #each filteredTasks as task }
             <TableRows 
                 { ...task } 
                 { ...rowFunctions }
@@ -95,11 +110,22 @@
 </table>
 
 <style>
+    select{
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+    }
     table {
         border-collapse: collapse;
         width: 100%;
     }
 
+    th{
+        font-weight: bold;
+    }
+    
     th,
     :global(td) {
         border: 1px solid #ddd;
