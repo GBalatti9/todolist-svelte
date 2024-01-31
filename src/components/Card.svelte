@@ -1,9 +1,23 @@
 <script>
+    import { onMount } from "svelte";
     import { Form } from "./";
+    import { checkId } from '../helpers';
 
     let tasks = [];
+    onMount(() => {
+        tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    });
 
-    const newTask = ({ detail }) => {
+    const addNewTask = ({ detail }) => {
+
+        let idAlreadyExists = checkId( tasks, detail );
+        if ( idAlreadyExists ) {
+            detail = {
+                ...detail,
+                id: tasks.length
+            }
+        }
+
         tasks = [ ...tasks, detail ]
     }
 </script>
@@ -13,7 +27,7 @@
     <tbody>
         <tr>
             <td colspan="5">
-                <Form on:add-task={ newTask }/>
+                <Form on:add-task={ addNewTask }/>
             </td>
         </tr>
         <tr>
