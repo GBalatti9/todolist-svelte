@@ -87,7 +87,7 @@
             </td>
         </tr>
         <tr>
-            <th>#</th>
+            <th id="id">#</th>
             <th>Task</th>
             <th>
                 <select name="status" on:change={ (e) => handleFilterTask(e) }>
@@ -122,8 +122,12 @@
         width: 100%;
     }
 
+    #id{
+        width: 50px;
+    }
     th{
         font-weight: bold;
+        width: 110px;
     }
     
     th,

@@ -1,4 +1,5 @@
 <script>
+    import { fade } from 'svelte/transition';
     export let id, task, status, editing, handleDelete, handleEdit, closeEditing, handleInputChange, save;
     const statusList = ['Done', 'In Progress', 'To Start'];
 
@@ -9,7 +10,7 @@
 
 </script>
 
-<tr class="table-row">
+<tr class="table-row" transition:fade>
     <td class="id-column"> { id } </td>
     { #if editing }
         <td>
